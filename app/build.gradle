@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -23,16 +26,36 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures{
+        viewBinding = true
+    }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 }
 
 dependencies {
+
+    //Ciclo de vida
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.1"
+
+    //Picasso (Imagen de Internet)
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //GSON
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //Moshi (JSON -> DataBase)
+    implementation 'com.squareup.moshi:moshi:1.13.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
     //RetroFit (Network Request)
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
